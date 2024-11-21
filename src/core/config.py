@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     """
     BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    app_name: str = Field("ShellSleuth", frozen=True)
+    app_name: str = Field("shell_sleuth", frozen=True)
     debug: bool = False
     database_url: str = "sqlite:///./cache.db"
     shell: str = "bash"

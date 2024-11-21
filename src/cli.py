@@ -4,11 +4,11 @@ import click
 @click.group(invoke_without_command=True)
 @click.pass_context
 def cli(ctx):
-    """ShellSleuth: Quickly find and manage your private tools, shortcuts, and aliases."""
+    """shell_sleuth: Quickly find and manage your private tools, shortcuts, and aliases."""
     if ctx.invoked_subcommand is None:
         click.echo("hello world")
     else:
-        click.echo("ShellSleuth: Quickly find and manage your private tools, shortcuts, and aliases.")
+        click.echo("shell_sleuth: Quickly find and manage your private tools, shortcuts, and aliases.")
 
 
 @click.command()

@@ -1,4 +1,4 @@
-from enums import get_config_file_name_by_shell, ShellType
+from src.enums import get_config_file_name_by_shell, ShellType
 
 
 class ShellConfigParser:
