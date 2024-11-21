@@ -2,7 +2,7 @@ import click
 from loguru import logger
 
 from src.core.logger_ import init_logger
-from src.utils.file_info import get_file_type
+from src.utils.file_info import get_file_type, get_shell_config_file_path
 
 
 def init():
@@ -20,6 +20,8 @@ def cli(ctx):
         click.echo("hello world")
     else:
         click.echo("shell_sleuth: Quickly find and manage your private tools, shortcuts, and aliases.")
+
+    logger.info(f"{get_shell_config_file_path()}")
 
 
 @click.command()
