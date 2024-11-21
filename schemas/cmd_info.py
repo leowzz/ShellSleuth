@@ -6,7 +6,7 @@ class AliasInfo(BaseModel):
     command: str
 
 
-class ExecutableInfo(BaseModel):
-    executable: str
+class FileInfo(BaseModel):
     path: str
     file_type: str
+    file_size: str

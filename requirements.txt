@@ -1,6 +1,6 @@
 click~=8.1.7
 pydantic~=2.10.0
-pydantic-settings~=2.6.1
+pydantic-settings[toml]~=2.6.1
 loguru~=0.7.2
 # magika~=0.5.1
 filetype~=1.2.0

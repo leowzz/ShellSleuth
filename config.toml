@@ -1,0 +1,7 @@
+#debug = false
+#database_url = "your db path"
+shell = "bash"  # 可选项: bash, zsh
+
+[file_info]
+file_size_unit = "MB"  # 可选项: B, KB, MB, GB
+
