@@ -1,6 +1,7 @@
-from typing import Tuple, Type
+from typing import Tuple, Type, Optional
 import os
 
+from loguru import logger
 from pydantic import BaseModel, Field
 
 from pydantic_settings import (
@@ -9,6 +10,8 @@ from pydantic_settings import (
     SettingsConfigDict,
     TomlConfigSettingsSource,
 )
+
+from src.enums import ShellType
 
 
 class FileInfo(BaseModel):
@@ -19,12 +22,14 @@ class Settings(BaseSettings):
     """
     https://docs.pydantic.dev/latest/concepts/pydantic_settings/#other-settings-source
     """
-    BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    logger.info(f"{BASE_DIR=}")
 
     app_name: str = Field("shell_sleuth", frozen=True)
     debug: bool = False
     database_url: str = "sqlite:///./cache.db"
-    shell: str = "bash"
+    shell: ShellType = "bash"
+    shell_config_file_path: Optional[str] = None
 
     file_info: FileInfo
 
@@ -32,17 +37,17 @@ class Settings(BaseSettings):
 
     @classmethod
     def settings_customise_sources(
-        cls,
-        settings_cls: Type[BaseSettings],
-        init_settings: PydanticBaseSettingsSource,
-        env_settings: PydanticBaseSettingsSource,
-        dotenv_settings: PydanticBaseSettingsSource,
-        file_secret_settings: PydanticBaseSettingsSource,
+            cls,
+            settings_cls: Type[BaseSettings],
+            init_settings: PydanticBaseSettingsSource,
+            env_settings: PydanticBaseSettingsSource,
+            dotenv_settings: PydanticBaseSettingsSource,
+            file_secret_settings: PydanticBaseSettingsSource,
     ) -> Tuple[PydanticBaseSettingsSource, ...]:
         return (TomlConfigSettingsSource(settings_cls),)
 
 
 setting = Settings()
-
+logger.info(f"{setting=}")
 if __name__ == "__main__":
     print(setting)
