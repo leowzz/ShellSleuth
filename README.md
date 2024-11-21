@@ -15,6 +15,10 @@ easy to keep track of your custom commands and optimize your workflow.
 
 从历史中获取各命令出现次数, 排序
 
+## 获取文件类型
+
+默认使用 `filetype` 进行判断, 如果需要高精度判断, 可以使用 `magika`(安装依赖时将 `requirements.txt`中的注释解除)
+
 ---
 
 ## ref
